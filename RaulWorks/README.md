@@ -1,4 +1,4 @@
-# 🌐 RaulWorks
+# RaulWorks
 
 **RaulWorks** es una página web personal creada con **WordPress** para presentarme y mostrar mi perfil profesional como estudiante de desarrollo web.
 
@@ -6,14 +6,14 @@
 
 ---
 
-##  Descripción
+## Descripción
 
 RaulWorks es una web tipo **portfolio personal**, donde comparto información sobre mí, mi formación, experiencia, proyectos y formas de contacto.  
 El objetivo principal es disponer de una presencia profesional online y mostrar mi progreso como desarrollador.
 
 ---
 
-##  Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - **WordPress**  
 - **PHP**, **HTML5**, **CSS3**  
@@ -22,7 +22,7 @@ El objetivo principal es disponer de una presencia profesional online y mostrar 
 
 ---
 
-##  Características principales
+## Características principales
 
 - Página de inicio con una presentación breve y profesional  
 - Sección *Sobre mí* con información personal y objetivos  
@@ -31,7 +31,7 @@ El objetivo principal es disponer de una presencia profesional online y mostrar 
 
 ---
 
-##  Aprendizajes
+## Aprendizajes
 
 Durante la creación del sitio, trabajé con:
 - Personalización de temas y estilos con CSS.  
@@ -42,7 +42,7 @@ Durante la creación del sitio, trabajé con:
 
 ---
 
-##  Próximas mejoras
+## Próximas mejoras
  
 - Añadir sección de blog con artículos técnicos.  
 - Conectar con un formulario dinámico (PHP / JS).  
@@ -51,3 +51,4 @@ Durante la creación del sitio, trabajé con:
 
  **Autor:** [Raúl](https://github.com/raaulchicaa)  
  **Año:** 2025  
+
