@@ -2,7 +2,7 @@
 
 **RaulWorks** es una página web personal creada con **WordPress** para presentarme y mostrar mi perfil profesional como estudiante de desarrollo web.
 
-🔗 **Enlace:** [https://raulworks.com](https://raulworks.com) 
+**Enlace:** [https://raulworks.com](https://raulworks.com) 
 
 ---
 
@@ -51,4 +51,5 @@ Durante la creación del sitio, trabajé con:
 
  **Autor:** [Raúl](https://github.com/raaulchicaa)  
  **Año:** 2025  
+
 
