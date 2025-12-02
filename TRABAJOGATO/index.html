@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vw;
+      width: 100vw;
+      overflow: hidden;
+      background-color:rgb(67, 67, 133) ;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(67, 67, 133);
+    }
+
+    .footer-copy {
+      background-color: rgb(109, 109, 175);
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      text-align: center;
+    }
+
+    .footer-menu {
+      background-color: rgb(67, 67, 133);
+      display: flex;
+      justify-content: space-around;
+      color: antiquewhite;
+      height: 200px;
+      font-size: 20px;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      list-style-type: none;
+      font-size: 25px;      
+    }
+
+    a {
+      color: antiquewhite;
+      text-decoration: none;
+    }
+
+    .cta-container {
+      background-image: url(gato.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100vw;
+      height: 460px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: rgb(67, 67, 133);
+      font-size: 25px;
+      text-shadow: antiquewhite 2px 3px;
+
+    }
+
+    .footer-copy h3 {
+      margin: 0;
+    }
+
+    .footer-copy {
+      height: 100px;
+      color: antiquewhite;
+    }
+
+    #links1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #links2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #links3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #links4 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .search button {
+      border-radius: 20px;
+      border: none;
+      width: 35px;
+      height: 35px;
+      right: 25px;
+      background-color: antiquewhite;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .search input {
+      border-radius: 20px;
+      border: none;
+      background-color: antiquewhite;
+      width: 200px;
+      height: 25px;
+      padding-left: 25px;
+    }
+
+    #lupa {
+      margin-left: 10px;
+    }
+    
+    .hamburger {
+      display:none;
+    }
+
+@media (max-width: 600px) {
+  .menu {
+    display: none;
+  } 
+  .hamburger {
+      display:block;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+
+    <nav>
+      <ul class="menu">
+        <li class="hamburger"><a href="#">☰</a></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="logo">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/2330/2330051.png" width="36px" alt="Logo"></a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Buscar...">
+      <button id="lupa">🔎︎</button>
+    </div>
+  </header>
+  <div class="cta-container">
+    <h1>♥ Cat lover</h1>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+  <footer>
+    <div class="footer-copy">
+      <div>
+        <h3>ONLY CATS</h3>
+        <small>&copy; 2000 – 2023</small>
+
+      </div>
+
+    </div>
+    <div class="footer-menu">
+      <div id="links1">
+        <h3>Cats</h3>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+      </div>
+      <div id="links2">
+        <h3>Cats</h3>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+      </div>
+      <div id="links3">
+        <h3>Cats</h3>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+      </div>
+      <div id="links4">
+        <h3>Cats</h3>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+        <a href="#">More cats</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
