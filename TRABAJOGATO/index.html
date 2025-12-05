@@ -6,12 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+
     body {
       margin: 0;
       padding: 0;
-      height: 100vw;
-      width: 100vw;
-      overflow: hidden;
       background-color:rgb(67, 67, 133) ;
     }
 
@@ -46,7 +44,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
       list-style-type: none;
       font-size: 25px;      
     }
@@ -61,7 +59,6 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      width: 100vw;
       height: 460px;
       display: flex;
       justify-content: center;
@@ -69,7 +66,6 @@
       color: rgb(67, 67, 133);
       font-size: 25px;
       text-shadow: antiquewhite 2px 3px;
-
     }
 
     .footer-copy h3 {
@@ -109,7 +105,6 @@
       align-items: center;
     }
 
-
     .search button {
       border-radius: 20px;
       border: none;
@@ -118,44 +113,86 @@
       right: 25px;
       background-color: antiquewhite;
       font-weight: bold;
-      margin-right: 10px;
+      margin-right: 35px;
+    }
+
+    .search:hover input{
+      display: block;
+      
+    }
+    .search:hover {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap:10px;
     }
 
     .search input {
       border-radius: 20px;
       border: none;
       background-color: antiquewhite;
-      width: 200px;
+      width: 100px;
       height: 25px;
       padding-left: 25px;
+      display: none;
     }
 
-    #lupa {
-      margin-left: 10px;
-    }
-    
     .hamburger {
       display:none;
+  
     }
 
-@media (max-width: 600px) {
-  .menu {
-    display: none;
-  } 
-  .hamburger {
-      display:block;
-  }
-}
+    .logo {
+      position: absolute;
+      left: calc(50% - 18px);
+    }
 
+    
+
+
+  @media screen and (max-width: 767px) {
+
+    .menu {
+      display: none;
+    }
+
+    .hamburger {
+      display:block;
+      margin-left: 35px;
+      padding: 27px;
+      font-size: 20px;
+    }
+
+    .footer-menu {
+      flex-direction: column;   
+    }
+
+    nav:hover .menu{
+      position:absolute;
+      background-color: rgba(109, 109, 175, 0.8);
+      width:100%;
+      top:53px;
+      left:0px;
+      padding:20px 20px;
+      display:flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    
+  }
   </style>
 </head>
 
 <body>
-  <header>
+    <header>
 
+  
     <nav>
+    <div class="hamburger">
+      <a href="#">☰</a>
+    </div>
       <ul class="menu">
-        <li class="hamburger"><a href="#">☰</a></li>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Servicios</a></li>
         <li><a href="#">Contacto</a></li>
@@ -165,7 +202,7 @@
       <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/2330/2330051.png" width="36px" alt="Logo"></a>
     </div>
     <div class="search">
-      <input type="text" placeholder="Buscar...">
+      <input id="buscar" type="text" placeholder="Buscar...">
       <button id="lupa">🔎︎</button>
     </div>
   </header>
