@@ -1,0 +1,213 @@
+<html>
+	<head>
+
+		<style>
+			body {
+				overflow:hidden;
+				background-color: grey;
+			}
+			
+			#paddle1 {
+				width: 40px;
+				height: 150px;
+				position: absolute;
+				top: calc(50% - 75px);
+				left: 50px;
+				background-color: blue;
+			}
+
+			#paddle2 {
+				width: 40px;
+				height: 150px;
+				position: absolute;
+				top: calc(50% - 75px);
+				right: 50px;
+				background-color: red;
+			}
+
+			#ball {
+				position: absolute;
+				top: calc(50%);
+				left: calc(50%);
+				background-color: #AA0000;
+
+			}
+
+			.puntos{
+				position: absolute;
+				top: 50%; 
+				transform: translateY(-50%);
+				font-size: 30vw;
+				font-weight: bold;
+				
+			}
+
+			#punt1{
+				color: rgba(255, 0, 0, 25%);
+				position: absolute;
+				right: 20%;
+				text-align: center;      
+			}
+			
+			#punt2{
+				color: rgba(0, 0, 255, 25%);
+				position: absolute;
+				text-align: center;
+				left: 20%;              
+			}
+
+
+
+		</style>
+	</head>
+	<body>
+		<div class="puntos" id="punt1">0</div>
+		<div class="puntos" id="punt2">0</div>
+		<div id="paddle1"></div>
+		<div id="paddle2"></div>
+		<div id="ball"></div>
+		
+
+
+	</body>	
+		<script>
+			const paddle1 = document.getElementById("paddle1");
+			const paddle2 = document.getElementById("paddle2");
+			const ball = document.getElementById("ball");
+			let punt1 = document.getElementById("punt1");
+			let punt2 = document.getElementById("punt2");
+			puntos1=0;
+			puntos2=0;
+
+			const ball_radius = 45;
+			ball.style.width = 2*ball_radius + "px";
+			ball.style.height = 2*ball_radius + "px";
+			ball.style.borderRadius = ball_radius + "px";
+			
+			var velocity_x = 15;
+			var velocity_y = -15;
+
+			document.onkeydown = move_paddle;
+			
+			var ball_movement;
+			
+			
+			
+			function init_game(){
+				ball.style.top = "50%";
+				ball.style.left = "50%";
+
+				ball_movement = setInterval(move_ball, 25);
+			}
+
+			
+			function move_ball(){
+
+				//Check Top
+				if (ball.offsetTop  <= 0) {
+					velocity_y = -velocity_y;
+				}
+
+				//Check right
+				if (ball.offsetLeft >= (window.innerWidth - 2*ball_radius)) {
+					velocity_x = -velocity_x;
+				}
+
+				//Check bottom
+				if (ball.offsetTop >= (window.innerHeight -2*ball_radius)) {
+					velocity_y = -velocity_y;
+				}
+
+
+
+				//Check left
+
+				if (ball.offsetLeft <= 90 && 
+					(ball.offsetTop >= (paddle1.offsetTop-ball_radius))	&& 
+					(ball.offsetTop <= (paddle1.offsetTop + 150 - ball_radius))){
+					velocity_x = -velocity_x;
+				}
+
+				if (ball.offsetLeft <= 85) {
+					clearInterval(ball_movement);
+					
+					puntos1++;
+					punt1.innerHTML = puntos1;
+					setTimeout(init_game,2000);
+
+				}
+
+				//Check right
+
+				if (ball.offsetLeft >= window.innerWidth-90-(2*ball_radius) && 
+					(ball.offsetTop >= (paddle2.offsetTop-ball_radius))	&& 
+					(ball.offsetTop <= (paddle2.offsetTop + 150 - ball_radius))){
+					velocity_x = -velocity_x;
+				}
+
+
+				if (ball.offsetLeft >= window.innerWidth-90){
+					clearInterval(ball_movement);
+					puntos2++;
+					punt2.innerHTML = puntos2;
+
+					setTimeout(init_game,2000);
+				}
+
+			
+
+				
+				ball.style.top = (ball.offsetTop + velocity_y) +"px";
+				ball.style.left = (ball.offsetLeft + velocity_x) +"px";
+			
+			}
+			var a=1;
+
+			function move_paddle(pkey){
+				// console.log("tecla pulsada: " + pkey.which);  
+
+				if (pkey.which == 119){
+					if(paddle1.offsetTop>0){
+						paddle1.style.top = (paddle1.offsetTop - 10) +"px";
+					}
+				} else if (pkey.which == 115){
+					if(paddle1.offsetTop<window.innerHeight-150){
+						paddle1.style.top = (paddle1.offsetTop + 10) +"px";
+					}
+				}else if (pkey.which == 111){
+					if(paddle2.offsetTop>0){
+						paddle2.style.top = (paddle2.offsetTop - 10) +"px";
+					}
+				} else if (pkey.which == 108){
+					if(paddle2.offsetTop<window.innerHeight-150){
+						paddle2.style.top = (paddle2.offsetTop + 10) +"px";
+					}
+				}
+
+			}
+
+			function paddle1up(){
+				paddle1.style.top = (paddle1.offsetTop - 10) +"px";
+
+			}
+
+
+			function paddle1down(){
+				paddle1.style.top = (paddle1.offsetTop + 10) +"px";
+			}
+
+			function paddle2up(){
+				paddle2.style.top = (paddle2.offsetTop - 10) +"px";
+			}
+
+
+			function paddle2down(){
+				paddle2.style.top = (paddle2.offsetTop + 10) +"px";
+			}
+
+
+
+			init_game();
+
+		</script>
+</html>
