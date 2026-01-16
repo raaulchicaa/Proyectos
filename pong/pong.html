@@ -1,0 +1,586 @@
+<html>
+
+<head>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Press+Start+2P&display=swap"
+		rel="stylesheet">
+
+	<style>
+		.press-start-2p-regular {
+			font-family: "Press Start 2P", system-ui;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+
+		body {
+			overflow: hidden;
+			background-color: grey;
+			font-family: "Press Start 2P", system-ui;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+		/* CSS PARA JUEGO */
+
+		#paddle1 {
+			width: 40px;
+			height: 150px;
+			position: absolute;
+			top: calc(50% - 75px);
+			left: 50px;
+			background-color: blue;
+		}
+
+		#paddle2 {
+			width: 40px;
+			height: 150px;
+			position: absolute;
+			top: calc(50% - 75px);
+			right: 50px;
+			background-color: red;
+		}
+
+		#ball {
+			position: absolute;
+			top: calc(50%);
+			left: calc(50%);
+			background-color: yellow;
+
+		}
+
+		.puntos {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 20vw;
+			font-weight: bold;
+			width: 40vw;           
+			pointer-events: none;
+			text-shadow: 10px 10px rgba(255, 255, 255, 10%) ;
+
+		}
+
+		#punt1 {
+			color: rgba(255, 0, 0, 25%);
+			position: absolute;
+			text-align: center;
+			right: 10%;
+
+		}
+
+		#punt2 {
+			color: rgba(0, 0, 255, 25%);
+			position: absolute;
+			text-align: center;
+			left: 15%;
+		}
+
+		#btnSalir {
+			border: none;
+			position: absolute;
+			width: 400px;
+			height: auto;
+			left: calc(50% - 200px);
+			background: none;
+			color: white;
+			font-size: 20px;
+			padding: 10px;
+			font-family: "Press Start 2P", system-ui;
+			font-weight: 400;
+			font-style: normal;
+			text-shadow: 2px 2px black;
+			transition: 0.1s;
+			margin-top: 10px;
+		}
+
+		#btnSalir:hover {
+			/* color: red; */
+			color: black;
+			text-shadow: 2px 2px white;
+			font-size: 25px;
+
+		}
+
+		#cuentaAtras {
+			font-size: 300px;
+			text-shadow: 20px 20px rgb(75, 72, 72);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#juego{
+			display: none;
+		}
+		
+
+		#w{
+			top: 10px;
+			left: 10px;
+		}
+
+		#s{
+			bottom: 10px;
+			left: 10px;
+		}
+
+		#o{
+			top: 10px;
+			right: 10px;
+		}
+
+		#l{
+			bottom: 10px;
+			right: 10px;
+		}
+
+		.letras{
+			position: absolute;
+			font-size: 20px;
+			color: rgb(255, 255, 255);
+			pointer-events: none;
+			text-shadow: 2px 2px black;
+		}
+
+		.nombres{
+			font-size: 40px;
+			top: 20px;
+			position: absolute;
+			color: white;
+			pointer-events: none;
+
+		}
+
+		#nombre1{
+			left: 300px;
+			text-shadow: 4px 4px blue;
+		}
+
+		#nombre2{
+			right: 300px;
+			text-shadow: 4px 4px red;
+		}
+
+
+		/* CSS DEL MENU */
+
+		#menu {
+			display: block;
+			flex-direction: column; 
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			color: white;
+			text-align: center;
+		}
+
+		#menu h2 {
+			margin-top: 100px;
+			margin-bottom: 100px; 
+			font-size: 80px;
+			text-shadow: 10px 10px black;
+			pointer-events: none;
+
+		}
+
+		#nombres {
+			font-size: 30px;
+			margin-bottom: 100px;
+			text-shadow: 5px 5px rgb(87, 87, 87);
+
+			
+		}
+
+		#nombres > div{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			/* margin: auto;
+			width: 50vw; */
+			gap: 10px;
+		}
+
+
+		#dificultad{
+			font-size: 35px;
+			text-shadow: 5px 5px black;
+		}
+
+		#dificultades{
+			font-size: 35px;
+			margin-top: 40px;
+			display: flex;
+			justify-content: center;
+			gap: 100px;
+
+		}
+
+		#btnJugar {
+			border: none;
+			background: none;
+			color: black;
+			font-family: "Press Start 2P", system-ui;
+			cursor: pointer;
+			font-size: 60px;
+			margin-top: 100px;
+			text-shadow: 5px 5px white;
+			transition: 0.3s;
+		}
+
+		#btnJugar:hover {
+			color: white;
+			text-shadow: 5px 5px black;
+		}
+
+		input:checked ~ label {
+			transition: 0.5s;
+
+		}
+
+		input:checked ~ label#facillabel {
+			text-shadow: 5px 5px green;
+		}
+		
+		input:checked ~ label#normallabel {
+			text-shadow: 5px 5px blue;
+		}
+
+		input:checked ~ label#dificillabel {
+			text-shadow: 5px 5px orangered;
+		}
+
+		input:checked ~ label#extremolabel {
+			text-shadow: 5px 5px black;
+			color: red;
+			transition: color 2s , text-shadow 0.5s;
+
+
+		}
+
+		#dificultades input{
+			display: none;
+
+		}
+
+		#dificultades label{
+			cursor: pointer
+
+		}
+
+		#menu input{
+			margin-bottom: 10px;
+			border: 4px dashed white;
+			background-color: grey;
+			color: white;
+			width: 260px;
+			height: 60px;
+			font-family: "Press Start 2P", system-ui;
+			padding: 25px;
+			font-size: 20px;
+			text-shadow: 2px 2px black;
+			text-transform: uppercase;
+		}
+
+		#menu input:focus{
+			background-color: rgb(83, 83, 83);
+			outline: none;
+			transition: 0.5s;
+
+		}
+
+		#menu input:active{
+			background-color: rgb(34, 34, 34);
+			outline: none;
+		}
+		
+
+		
+		
+
+
+	</style>
+</head>
+
+<body>
+
+	<div id="menu">
+        <h2>Juego del PONG</h2>
+
+
+		<form id="inicio">
+
+			<div id="nombres">
+
+				<div>
+					<label>Nombre Jugador 1:</label>
+					<input type="text" name="jug1Name" maxlength="10" required>
+				</div>
+				
+				<div>
+					<label>Nombre Jugador 2:</label>
+					<input type="text" name="jug2Name" maxlength="10" required>
+				</div>
+				
+			</div>
+			
+
+			<label id="dificultad">Dificultad:</label>
+
+			<div id="dificultades">		
+				
+				<div>
+					<input type="radio" id="facil" name="dificultad" value="10" checked>
+					<label for="facil" id="facillabel">Fácil</label>
+				</div>
+				
+
+				<div>
+					<input type="radio" id="normal" name="dificultad" value="15">
+					<label for="normal" id="normallabel">Normal</label>
+				</div>
+				
+				<div>
+					<input type="radio" id="dificil" name="dificultad" value="20">
+					<label for="dificil" id="dificillabel">Difícil</label>
+				</div>
+				
+				<div>
+					<input type="radio" id="extremo" name="dificultad" value="35">
+					<label for="extremo" id="extremolabel">Extremo</label>
+				</div>
+			</div>
+
+			<button id="btnJugar" type="submit">Jugar</button>
+		</form>
+	</div>
+
+
+
+	<div id="juego">
+		<button id="btnSalir">Salir del juego</button>
+		<div class="puntos" id="punt1">0</div>
+		<div class="puntos" id="punt2">0</div>
+		<div class="letras" id="w">w</div>
+		<div class="letras" id="s">s</div>
+		<div class="letras" id="o">o</div>
+		<div class="letras" id="l">l</div>
+		<div class="nombres" id="nombre1">ss</div>
+		<div class="nombres" id="nombre2">ss</div>
+		<div id="paddle1"></div>
+		<div id="paddle2"></div>
+		<div id="ball"></div>
+		<div id="cuentaAtras"></div>
+	</div>
+
+
+</body>
+
+<script>
+
+	const paddle1 = document.getElementById("paddle1");
+	const paddle2 = document.getElementById("paddle2");
+	const ball = document.getElementById("ball");
+	let punt1 = document.getElementById("punt1");
+	let punt2 = document.getElementById("punt2");
+	puntos1 = 0;
+	puntos2 = 0;
+
+	const ball_radius = 45;
+
+	ball.style.width = 2 * ball_radius + "px";
+	ball.style.height = 2 * ball_radius + "px";
+	ball.style.borderRadius = ball_radius + "px";
+
+	var velocity_x = 15;
+	var velocity_y = -15;
+
+	var ball_movement;
+
+	function init_game() {
+		ball.style.top = "50%";
+		ball.style.left = "50%";
+		ball.style.display = "none";
+
+		clearInterval(ball_movement);
+
+		const cuentaAtrasDiv = document.getElementById("cuentaAtras");
+		let contador = 3; 
+
+		cuentaAtrasDiv.innerHTML = contador; 
+
+		var cuentaAtrasInterval;
+
+		 cuentaAtrasInterval = setInterval(() => {
+			contador--;
+			if (contador > 0) {
+				cuentaAtrasDiv.innerHTML = contador;
+			} else{
+				cuentaAtrasDiv.innerHTML = "START"; 
+			}
+			if(contador < 0){
+				clearInterval(cuentaAtrasInterval);
+				//cuentaAtrasDiv.innerHTML = " ";
+				cuentaAtrasDiv.style.display = "none";
+				ball.style.display = "block";
+				ball_movement = setInterval(move_ball, 25);
+			}
+		}, 500);
+	}
+
+
+	function move_ball() {
+
+		if (ball.offsetTop <= 0) {
+			velocity_y = -velocity_y;
+		}
+
+		if (ball.offsetLeft >= (window.innerWidth - 2 * ball_radius)) {
+			velocity_x = -velocity_x;
+		}
+
+		if (ball.offsetTop >= (window.innerHeight - 2 * ball_radius)) {
+			velocity_y = -velocity_y;
+		}
+
+		if (ball.offsetLeft <= 90 &&
+			(ball.offsetTop >= (paddle1.offsetTop - ball_radius)) &&
+			(ball.offsetTop <= (paddle1.offsetTop + 150 - ball_radius)) && velocity_x<0) {
+			velocity_x = -velocity_x;
+		}
+
+		if (ball.offsetLeft <= 70) {
+			clearInterval(ball_movement);
+			console.log("si");
+
+			puntos1++;
+			punt1.innerHTML = puntos1;
+			setTimeout(init_game, 2000);
+		}
+
+		if (ball.offsetLeft >= window.innerWidth - 90 - (2 * ball_radius) &&
+			(ball.offsetTop >= (paddle2.offsetTop - ball_radius)) &&
+			(ball.offsetTop <= (paddle2.offsetTop + 150 - ball_radius)) && velocity_x>0) {
+			velocity_x = -velocity_x;
+		}
+
+		if (ball.offsetLeft >= window.innerWidth - 90) {
+			clearInterval(ball_movement);
+			puntos2++;
+			punt2.innerHTML = puntos2;
+
+			setTimeout(init_game, 2000);
+		}
+
+		ball.style.top = (ball.offsetTop + velocity_y) + "px";
+		ball.style.left = (ball.offsetLeft + velocity_x) + "px";
+
+	}
+
+	var move_paddle_id_1=0;
+	var move_paddle_id_2=0;
+
+	document.addEventListener('keydown', function (pkey) {
+
+		if ((pkey.which == 87 || pkey.which == 83) && move_paddle_id_1==0) {
+			move_paddle_id_1 = setInterval(move_paddle, 20, pkey);
+		} else if ((pkey.which == 79 || pkey.which == 76) && move_paddle_id_2==0) {
+			move_paddle_id_2 = setInterval(move_paddle, 20, pkey);
+
+		}
+
+	})
+
+
+	document.addEventListener('keyup', function (pkey) {
+		if (pkey.which == 87 || pkey.which == 83) {
+			clearInterval(move_paddle_id_1);
+			move_paddle_id_1 =0;
+		} else if (pkey.which == 79 || pkey.which == 76) {
+			clearInterval(move_paddle_id_2);
+			move_paddle_id_2 =0;
+		}
+	})
+
+
+
+	function move_paddle(pkey) {
+		console.log("tecla pulsada: " + pkey.which);
+
+		if (pkey.which == 87) {
+			if (paddle1.offsetTop > 0) {
+				paddle1.style.top = (paddle1.offsetTop - 10) + "px";
+			}
+		} else if (pkey.which == 83) {
+			if (paddle1.offsetTop < window.innerHeight - 150) {
+				paddle1.style.top = (paddle1.offsetTop + 10) + "px";
+			}
+		} else if (pkey.which == 79) {
+			if (paddle2.offsetTop > 0) {
+				paddle2.style.top = (paddle2.offsetTop - 10) + "px";
+			}
+		} else if (pkey.which == 76) {
+			if (paddle2.offsetTop < window.innerHeight - 150) {
+				paddle2.style.top = (paddle2.offsetTop + 10) + "px";
+			}
+		}
+	}
+
+
+	function paddle1up() {
+		paddle1.style.top = (paddle1.offsetTop - 10) + "px";
+	}
+
+
+	function paddle1down() {
+		paddle1.style.top = (paddle1.offsetTop + 10) + "px";
+	}
+
+	function paddle2up() {
+		paddle2.style.top = (paddle2.offsetTop - 10) + "px";
+	}
+
+
+	function paddle2down() {
+		paddle2.style.top = (paddle2.offsetTop + 10) + "px";
+	}
+
+	document.getElementById("btnSalir").onclick = function () {
+		const salir = confirm("¿Seguro que quieres salir del juego?");
+		if (salir) {
+			location.reload();
+		}
+	};
+
+
+	const menu = document.getElementById("menu");
+	const juego = document.getElementById("juego");
+
+
+
+	let numJugadores;
+	let nombreJugador1;
+	let nombreJugador2;
+	let dificultad;
+
+	document.getElementById("inicio").addEventListener("submit", function (e) {
+		e.preventDefault();
+		const form = e.target;
+		nombre1.textContent = form.jug1Name.value.trim().toUpperCase();
+		nombre2.textContent = form.jug2Name.value.trim().toUpperCase();
+		
+		
+		dificultad = parseInt(form.dificultad.value);
+		velocity_x = dificultad;
+		velocity_y = -dificultad;
+		menu.style.display = "none";
+		juego.style.display = "block";
+		init_game();
+	});
+
+
+</script>
+
+</html>
